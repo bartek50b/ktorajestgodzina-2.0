@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Która Jest Godzina 2.0</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animations.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <button class="menu-button" id="hour-button">
+          <div class="menu-icon">
+            <img
+              src="media/svg/clockFace.svg"
+              class="menu-icon-svg default-hover-icon-animation"
+            />
+            <img
+              src="media/svg/hand1.svg"
+              class="menu-icon-svg minute-hand-icon-animation"
+            />
+            <img
+              src="media/svg/hand2.svg"
+              class="menu-icon-svg hour-hand-icon-animation"
+            />
+          </div>
+          Godzina
+        </button>
+        <button class="menu-button" id="gallery-button">
+          <div class="menu-icon">
+            <img
+              src="media/svg/gallery.svg"
+              class="menu-icon-svg default-hover-icon-animation"
+            />
+          </div>
+          Galeria
+        </button>
+        <button class="menu-button" id="contact-button">
+          <div class="menu-icon">
+            <img
+              src="media/svg/contact.svg"
+              class="menu-icon-svg default-hover-icon-animation"
+            />
+          </div>
+          Kontakt
+        </button>
+      </nav>
+    </header>
+    <main>
+      <section id="clock-section">
+        <div id="clock">00:00</div>
+        <div id="clock-seconds">00</div>
+      </section>
+    </main>
+    <footer></footer>
+    <script src="script.js" defer></script>
+  </body>
+</html>

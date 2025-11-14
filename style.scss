@@ -1,0 +1,71 @@
+$primary-color: black;
+$primary-color-accent: grey;
+$secondary-color: white;
+$secondary-color-accent: white;
+$clock-size: 400px;
+
+body {
+  background: radial-gradient(at center top, #01ffea, #0fa3d8);
+  font-family: "Cascadia Code", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  height: 1920px;
+  nav {
+    display: flex;
+    background-color: darken($secondary-color, 15%);
+    outline: none;
+    padding: 0px;
+    .menu-button {
+      font-family: "Titillium Web", sans-serif;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      color: $primary-color;
+      width: 250px;
+      background-color: $secondary-color;
+      height: 100%;
+      padding: 20px 0px;
+      font-size: 40px;
+      border: none;
+      transition: background-color 0.4s ease-in;
+      &:hover {
+        background-color: darken($secondary-color, 30%);
+      }
+      .menu-icon {
+        height: 50px;
+        width: 50px;
+        position: relative;
+        .menu-icon-svg {
+          height: 50px;
+          width: 50px;
+          position: absolute;
+        }
+      }
+    }
+    #gallery-button {
+      background-color: darken($secondary-color, 5%);
+    }
+    #contact-button {
+      background-color: darken($secondary-color, 10%);
+    }
+  }
+  main {
+    color: $secondary-color;
+
+    #clock-section {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      #clock {
+        font-size: $clock-size;
+        text-shadow: 0.3vw 0.3vw 0.2vw $secondary-color-accent;
+      }
+      #clock-seconds {
+        font-size: $clock-size * 0.5;
+        text-shadow: 0.2vw 0.2vw 0.2vw $secondary-color-accent;
+        align-self: flex-end;
+      }
+    }
+  }
+}

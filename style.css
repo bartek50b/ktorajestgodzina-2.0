@@ -1,0 +1,66 @@
+body {
+  background: radial-gradient(at center top, #01ffea, #0fa3d8);
+  font-family: "Cascadia Code", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  height: 1920px;
+}
+body nav {
+  display: flex;
+  background-color: rgb(216.75, 216.75, 216.75);
+  outline: none;
+  padding: 0px;
+}
+body nav .menu-button {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: black;
+  width: 250px;
+  background-color: white;
+  height: 100%;
+  padding: 20px 0px;
+  font-size: 40px;
+  border: none;
+  transition: background-color 0.4s ease-in;
+}
+body nav .menu-button:hover {
+  background-color: rgb(178.5, 178.5, 178.5);
+}
+body nav .menu-button .menu-icon {
+  height: 50px;
+  width: 50px;
+  position: relative;
+}
+body nav .menu-button .menu-icon .menu-icon-svg {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+}
+body nav #gallery-button {
+  background-color: rgb(242.25, 242.25, 242.25);
+}
+body nav #contact-button {
+  background-color: rgb(229.5, 229.5, 229.5);
+}
+body main {
+  color: white;
+}
+body main #clock-section {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+}
+body main #clock-section #clock {
+  font-size: 400px;
+  text-shadow: 0.3vw 0.3vw 0.2vw white;
+}
+body main #clock-section #clock-seconds {
+  font-size: 200px;
+  text-shadow: 0.2vw 0.2vw 0.2vw white;
+  align-self: flex-end;
+}
+
+/*# sourceMappingURL=style.css.map */

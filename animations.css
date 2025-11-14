@@ -1,0 +1,42 @@
+.default-hover-icon-animation.animate {
+  animation: hoverIconDefault 1.2s ease 1;
+  transform-origin: 100% 50%;
+}
+
+@keyframes hoverIconDefault {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.minute-hand-icon-animation.animate {
+  animation: rotateMinuteHand 0.7s 1;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotateMinuteHand {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hour-hand-icon-animation.animate {
+  animation: rotateHourHand 1.5s 1;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotateHourHand {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
