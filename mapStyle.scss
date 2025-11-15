@@ -1,0 +1,35 @@
+$land-color: white;
+$ocean-color: blue;
+$border-color: black;
+
+.o {
+  stroke: $border-color;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: $land-color;
+  transition: fill 0.3s ease-out;
+}
+.l {
+  stroke: #000000;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: $land-color;
+  opacity: 0;
+}
+.ocean {
+  fill: $land-color;
+  opacity: 0.1;
+}
+
+.o.same-timezone {
+  fill: darken($land-color, 30%);
+}
+.o.hovered {
+  fill: darken($land-color, 50%);
+}
+
+.o.chosen {
+  fill: darken($land-color, 80%);
+}

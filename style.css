@@ -3,7 +3,6 @@ body {
   font-family: "Cascadia Code", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
-  height: 1920px;
 }
 body nav {
   display: flex;
@@ -15,6 +14,7 @@ body nav .menu-button {
   font-family: "Titillium Web", sans-serif;
   font-weight: 600;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 30px;
   color: black;
@@ -42,25 +42,50 @@ body nav .menu-button .menu-icon .menu-icon-svg {
 body nav #gallery-button {
   background-color: rgb(242.25, 242.25, 242.25);
 }
+body nav #gallery-button:hover {
+  background-color: rgb(165.75, 165.75, 165.75);
+}
 body nav #contact-button {
   background-color: rgb(229.5, 229.5, 229.5);
 }
+body nav #contact-button:hover {
+  background-color: #999999;
+}
 body main {
   color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
 body main #clock-section {
   display: flex;
+  display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  user-select: none;
+  transition: opacity 0.4s ease-in;
+}
+body main #clock-section:hover {
+  opacity: 0.7;
 }
 body main #clock-section #clock {
-  font-size: 400px;
+  font-size: 300px;
   text-shadow: 0.3vw 0.3vw 0.2vw white;
 }
 body main #clock-section #clock-seconds {
-  font-size: 200px;
+  font-size: 150px;
   text-shadow: 0.2vw 0.2vw 0.2vw white;
   align-self: flex-end;
+}
+body main #map {
+  width: 1200px;
+  align-self: center;
+}
+body main #map svg {
+  margin: 0px 50px;
+  width: 100%;
+  height: auto;
 }
 
 /*# sourceMappingURL=style.css.map */

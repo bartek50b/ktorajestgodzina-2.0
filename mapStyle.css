@@ -1,0 +1,33 @@
+.o {
+  stroke: black;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: white;
+  transition: fill 0.3s ease-out;
+
+  &.same-timezone {
+    fill: rgb(178.5, 178.5, 178.5);
+  }
+  &.hovered {
+    fill: rgb(127.5, 127.5, 127.5);
+  }
+  &.chosen {
+    fill: #333333;
+  }
+}
+
+.l {
+  stroke: #000000;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: white;
+  opacity: 0;
+}
+
+.ocean {
+  fill: white;
+  opacity: 0.1;
+}
+/*# sourceMappingURL=mapStyle.css.map */
