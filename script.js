@@ -101,6 +101,7 @@ clockButton.addEventListener("mouseleave", () => {
       .classList.remove("animate");
   }, 1500);
 });
+
 document.querySelectorAll(".menu-button").forEach((button) => {
   button.addEventListener("click", () => {
     loadPage(button.id.split("-")[0]);

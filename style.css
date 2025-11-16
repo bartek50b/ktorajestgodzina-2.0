@@ -12,7 +12,6 @@ body nav {
   outline: none;
   min-height: 10vh;
   opacity: 0.7;
-  max-height: 10vh;
 }
 body nav .menu-button {
   font-family: "Titillium Web", sans-serif;
@@ -128,7 +127,7 @@ body main #clock-section #clock-seconds {
 }
 @media (max-width: 720px) {
   body main #clock-section #clock {
-    font-size: 112px;
+    font-size: 80px;
     text-shadow: 0.1vw 0.1vw 0.7vw white;
     transition: font-size 0.5s ease-out;
   }
@@ -150,7 +149,7 @@ body main #content.change {
 body main #content #map-container {
   max-height: 66vh;
   align-self: center;
-  overflow: hidden;
+  overflow: visible;
 }
 body main #content #map-container #map {
   transition: width 0.5s ease-out;
