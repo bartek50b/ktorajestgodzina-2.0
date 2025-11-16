@@ -96,6 +96,9 @@ body {
     flex-wrap: nowrap;
     align-items: stretch;
     width: 100%;
+    @media (max-width: 720px) {
+      min-height: 70vh;
+    }
 
     #clock-section {
       display: flex;
@@ -132,7 +135,7 @@ body {
           transition: font-size 0.5s ease-out;
 
           &:hover {
-            font-size: $clock-size * 0.55;
+            font-size: $clock-size * 0.5;
           }
         }
         #clock-seconds {
@@ -149,7 +152,7 @@ body {
           transition: font-size 0.5s ease-out;
 
           &:hover {
-            font-size: $clock-size * 0.55;
+            font-size: $clock-size * 0.5;
           }
         }
         #clock-seconds {
@@ -226,7 +229,7 @@ body {
         font-size: $font-size;
         width: 50%;
         @media (max-width: 570px) {
-          width: 90%;
+          width: 100%;
         }
         @media (max-width: 720px) {
           width: 75%;
@@ -247,6 +250,9 @@ body {
           font-size: $font-size * 0.75;
           margin-bottom: 10px;
           color: $primary-color;
+          @media (max-width: 720px) {
+            width: 100%;
+          }
         }
 
         select {
@@ -255,6 +261,9 @@ body {
           font-size: $font-size * 0.5;
           margin-bottom: 10px;
           color: $primary-color;
+          @media (max-width: 720px) {
+            width: 100%;
+          }
         }
 
         .submit-button {
@@ -264,6 +273,10 @@ body {
           transition: background-color 0.2s ease-in;
           height: $font-size;
           font-size: $font-size * 0.75;
+          @media (max-width: 720px) {
+            width: 70%;
+            height: $font-size * 1.25;
+          }
 
           &:hover {
             background-color: darken($secondary-color, 30%);
@@ -276,6 +289,9 @@ body {
           margin-bottom: 10px;
           color: $primary-color;
           background-color: opacify($secondary-color, 0.5);
+          @media (max-width: 720px) {
+            width: 100%;
+          }
         }
       }
 

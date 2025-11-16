@@ -86,6 +86,11 @@ body main {
   align-items: stretch;
   width: 100%;
 }
+@media (max-width: 720px) {
+  body main {
+    min-height: 70vh;
+  }
+}
 body main #clock-section {
   display: flex;
   flex-wrap: nowrap;
@@ -117,7 +122,7 @@ body main #clock-section #clock-seconds {
     transition: font-size 0.5s ease-out;
   }
   body main #clock-section #clock:hover {
-    font-size: 88px;
+    font-size: 80px;
   }
   body main #clock-section #clock-seconds {
     font-size: 40px;
@@ -132,7 +137,7 @@ body main #clock-section #clock-seconds {
     transition: font-size 0.5s ease-out;
   }
   body main #clock-section #clock:hover {
-    font-size: 88px;
+    font-size: 80px;
   }
   body main #clock-section #clock-seconds {
     font-size: 56px;
@@ -206,7 +211,7 @@ body main #content .contact-form {
 }
 @media (max-width: 570px) {
   body main #content .contact-form {
-    width: 90%;
+    width: 100%;
   }
 }
 @media (max-width: 720px) {
@@ -228,12 +233,22 @@ body main #content .contact-form input {
   margin-bottom: 10px;
   color: black;
 }
+@media (max-width: 720px) {
+  body main #content .contact-form input {
+    width: 100%;
+  }
+}
 body main #content .contact-form select {
   width: 80%;
   height: 30px;
   font-size: 15px;
   margin-bottom: 10px;
   color: black;
+}
+@media (max-width: 720px) {
+  body main #content .contact-form select {
+    width: 100%;
+  }
 }
 body main #content .contact-form .submit-button {
   background-color: white;
@@ -242,6 +257,12 @@ body main #content .contact-form .submit-button {
   transition: background-color 0.2s ease-in;
   height: 30px;
   font-size: 22.5px;
+}
+@media (max-width: 720px) {
+  body main #content .contact-form .submit-button {
+    width: 70%;
+    height: 37.5px;
+  }
 }
 body main #content .contact-form .submit-button:hover {
   background-color: rgb(178.5, 178.5, 178.5);
@@ -252,6 +273,11 @@ body main #content .contact-form textarea {
   margin-bottom: 10px;
   color: black;
   background-color: white;
+}
+@media (max-width: 720px) {
+  body main #content .contact-form textarea {
+    width: 100%;
+  }
 }
 body main #content #gallery {
   font-family: "Titillium Web", sans-serif;
