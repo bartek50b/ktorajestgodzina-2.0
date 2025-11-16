@@ -1,0 +1,19 @@
+<form class="contact-form">
+  <span class="form-title">Zadaj nam pytanie</span>
+  <label for="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" > E-mail: </label>
+  <input type="email" id="email" name="email" placeholder="maciek@example.com" />
+  <label for="topics"> Z jakiego powodu piszesz? </label>
+  <select id="topics" name="topics">
+    <option value="hourQuestion">Chcę się zapytać która jest godzina</option>
+    <option value="question">Mam pytanie</option>
+    <option value="reportBug">Chcę zgłosić błąd</option>
+  </select>
+  <textarea
+    name="message"
+    rows="10"
+    cols="40"
+    placeholder="Miejsce na wiadomość"
+    required
+  ></textarea>
+  <input type="submit" value="Wyślij" class="submit-button" />
+</form>

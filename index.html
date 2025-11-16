@@ -17,7 +17,7 @@
   <body>
     <header>
       <nav>
-        <button class="menu-button" id="hour-button">
+        <button class="menu-button" id="clock-button">
           <div class="menu-icon">
             <img
               src="media/svg/clockFace.svg"
@@ -59,11 +59,15 @@
         <div id="clock">00:00</div>
         <div id="clock-seconds">00</div>
       </section>
-      <section id="map">
-        <script type="module" src="map.js"></script>
+      <section id="content">
+        <div id="map-container">
+          <section id="map">
+            <script type="module" src="map.js"></script>
+          </section>
+        </div>
       </section>
     </main>
-    <footer></footer>
+    <footer>Stronę wykonał: Bartosz Tokarczyk</footer>
     <script type="module" src="script.js" defer></script>
   </body>
 </html>

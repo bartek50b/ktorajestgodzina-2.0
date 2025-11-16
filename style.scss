@@ -2,40 +2,51 @@ $primary-color: black;
 $primary-color-accent: grey;
 $secondary-color: white;
 $secondary-color-accent: white;
-$clock-size: 300px;
+$clock-size: 160px;
+$font-size: 30px;
 
 body {
-  background: radial-gradient(at center top, #01ffea, #0fa3d8);
+  min-height: 100vh;
+  background-size: cover;
+  background: radial-gradient(at center top, #01ffea, #0fa3d8) no-repeat fixed;
   font-family: "Cascadia Code", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
+
   nav {
     display: flex;
     background-color: darken($secondary-color, 15%);
     outline: none;
-    padding: 0px;
+    min-height: 10vh;
+    opacity: 0.7;
+    max-height: 10vh;
+
     .menu-button {
       font-family: "Titillium Web", sans-serif;
       font-weight: 600;
       display: flex;
-      flex-wrap: nowrap;
       align-items: center;
+      justify-content: center;
+      flex-direction: row;
       gap: 30px;
       color: $primary-color;
-      width: 250px;
+      min-height: 100%;
       background-color: $secondary-color;
-      height: 100%;
-      padding: 20px 0px;
+      padding: 20px;
       font-size: 40px;
       border: none;
-      transition: background-color 0.4s ease-in;
+      transition: background-color 0.4s ease-in, scale 0.4s ease-in;
+
       &:hover {
         background-color: darken($secondary-color, 30%);
+        scale: 1.05;
       }
+
       .menu-icon {
         height: 50px;
         width: 50px;
-        position: relative;
+        margin-left: -20px;
+
         .menu-icon-svg {
           height: 50px;
           width: 50px;
@@ -43,54 +54,281 @@ body {
         }
       }
     }
-    #gallery-button {
-      background-color: darken($secondary-color, 5%);
-      &:hover {
-        background-color: darken($secondary-color, 35%);
+    @media (max-width: 500px) {
+      align-items: stretch;
+      .menu-button {
+        font-size: 0px;
+        flex-grow: 1;
       }
     }
-    #contact-button {
-      background-color: darken($secondary-color, 10%);
-      &:hover {
-        background-color: darken($secondary-color, 40%);
+    @media (max-width: 720px) and (min-width: 500px) {
+      .menu-icon {
+        display: none;
+      }
+    }
+    @media (max-width: 1080px) and (min-width: 500px) {
+      align-items: stretch;
+      .menu-button {
+        flex-grow: 1;
       }
     }
   }
+
+  #gallery-button {
+    background-color: darken($secondary-color, 5%);
+
+    &:hover {
+      background-color: darken($secondary-color, 35%);
+    }
+  }
+
+  #contact-button {
+    background-color: darken($secondary-color, 10%);
+
+    &:hover {
+      background-color: darken($secondary-color, 40%);
+    }
+  }
+
   main {
+    min-height: 85vh;
     color: $secondary-color;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     flex-wrap: nowrap;
+    align-items: stretch;
+    width: 100%;
 
     #clock-section {
-      display: flex;
       display: flex;
       flex-wrap: nowrap;
       justify-content: center;
       user-select: none;
+      opacity: 0.8;
       transition: opacity 0.4s ease-in;
+
       &:hover {
-        opacity: 0.7;
+        opacity: 0.6;
       }
+
       #clock {
         font-size: $clock-size;
-        text-shadow: 0.3vw 0.3vw 0.2vw $secondary-color-accent;
+        text-shadow: 0.2vw 0.2vw 0.15vw $secondary-color-accent;
+        transition: font-size 0.5s ease-out;
+
+        &:hover {
+          font-size: $clock-size * 1.05;
+        }
       }
+
       #clock-seconds {
         font-size: $clock-size * 0.5;
-        text-shadow: 0.2vw 0.2vw 0.2vw $secondary-color-accent;
+        text-shadow: 0.1vw 0.1vw 0.15vw $secondary-color-accent;
         align-self: flex-end;
       }
-    }
-    #map {
-      width: 1200px;
-      align-self: center;
-      svg {
-        margin: 0px 50px;
-        width: 100%;
-        height: auto;
+
+      @media (max-width: 570px) {
+        #clock {
+          font-size: $clock-size * 0.5;
+          text-shadow: 0.1vw 0.1vw 0.7vw $secondary-color-accent;
+          transition: font-size 0.5s ease-out;
+
+          &:hover {
+            font-size: $clock-size * 0.55;
+          }
+        }
+        #clock-seconds {
+          font-size: $clock-size * 0.25;
+          text-shadow: 0.05vw 0.05vw 0.07vw $secondary-color-accent;
+          align-self: flex-end;
+        }
+      }
+
+      @media (max-width: 720px) {
+        #clock {
+          font-size: $clock-size * 0.7;
+          text-shadow: 0.1vw 0.1vw 0.7vw $secondary-color-accent;
+          transition: font-size 0.5s ease-out;
+
+          &:hover {
+            font-size: $clock-size * 0.55;
+          }
+        }
+        #clock-seconds {
+          font-size: $clock-size * 0.35;
+          text-shadow: 0.07vw 0.07vw 0.7vw $secondary-color-accent;
+          align-self: flex-end;
+        }
       }
     }
+
+    #content {
+      transition: opacity 0.15s ease-out;
+
+      &.change {
+        opacity: 0.2;
+      }
+
+      #map-container {
+        max-height: 66vh;
+        align-self: center;
+        overflow: hidden;
+
+        #map {
+          transition: width 0.5s ease-out;
+          margin: auto;
+          width: 600px;
+
+          &:hover {
+            width: 90%;
+          }
+
+          @media (min-width: 1920px) {
+            width: 700px;
+          }
+          @media (min-width: 1400px) {
+            width: 1000px;
+          }
+
+          svg {
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+            display: block;
+          }
+        }
+
+        @media (max-width: 720px) {
+          width: 100%;
+          overflow: scroll;
+          -webkit-overflow-scrolling: touch;
+          display: block;
+          border: $primary-color 2px solid;
+          #map {
+            width: 3000px;
+            margin: 0 auto;
+            display: block;
+            right: 100%;
+
+            &:hover {
+              width: 3000px;
+            }
+          }
+        }
+      }
+
+      .contact-form {
+        font-family: "Titillium Web", sans-serif;
+        font-weight: 600;
+        display: flex;
+        margin: auto;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        font-size: $font-size;
+        width: 50%;
+        @media (max-width: 570px) {
+          width: 90%;
+        }
+        @media (max-width: 720px) {
+          width: 75%;
+        }
+
+        .form-title {
+          font-size: $font-size * 1.5;
+        }
+
+        label {
+          margin-bottom: 10px;
+          color: $secondary-color;
+        }
+
+        input {
+          width: 80%;
+          height: $font-size;
+          font-size: $font-size * 0.75;
+          margin-bottom: 10px;
+          color: $primary-color;
+        }
+
+        select {
+          width: 80%;
+          height: $font-size;
+          font-size: $font-size * 0.5;
+          margin-bottom: 10px;
+          color: $primary-color;
+        }
+
+        .submit-button {
+          background-color: $secondary-color;
+          border: none;
+          width: 50%;
+          transition: background-color 0.2s ease-in;
+          height: $font-size;
+          font-size: $font-size * 0.75;
+
+          &:hover {
+            background-color: darken($secondary-color, 30%);
+          }
+        }
+
+        textarea {
+          height: 300px;
+          font-size: $font-size * 0, 5;
+          margin-bottom: 10px;
+          color: $primary-color;
+          background-color: opacify($secondary-color, 0.5);
+        }
+      }
+
+      #gallery {
+        font-family: "Titillium Web", sans-serif;
+        font-weight: 600;
+        margin: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: stretch;
+        font-size: $font-size;
+        gap: 30px;
+        justify-content: space-evenly;
+
+        .image-container {
+          max-width: 400px;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          transition: font-size 0.5s ease-out, max-width 0.5s ease-out;
+
+          &:hover {
+            max-width: 430px;
+            font-size: $font-size * 1.15;
+          }
+        }
+
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        video {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+      }
+    }
+  }
+
+  footer {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 500;
+    min-height: min-content;
+    background-color: $secondary-color;
+    opacity: 0.5;
+    text-align: center;
+    font-size: 25px;
+    margin-top: 0px;
   }
 }

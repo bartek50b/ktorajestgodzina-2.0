@@ -1,5 +1,5 @@
 import { skyColors, sunMoonColors, sunPositions } from "./data.js";
-
+import { loadMap } from "./map.js";
 let timeDiff = 0;
 let skyTime = new Date();
 
@@ -79,45 +79,70 @@ setInterval(() => {
 
 updateClock();
 setInterval(updateClock, 1000);
+loadMap();
 
-const buttons = document.querySelectorAll(".menu-button");
+const clockButton = document.getElementById("clock-button");
+clockButton.addEventListener("mouseenter", () => {
+  clockButton
+    .querySelector(".minute-hand-icon-animation")
+    .classList.add("animate");
+  clockButton
+    .querySelector(".hour-hand-icon-animation")
+    .classList.add("animate");
+});
 
-buttons.forEach((button) => {
-  button.addEventListener("mouseenter", () => {
-    button
-      .querySelector(".default-hover-icon-animation")
-      .classList.add("animate");
-    button
+clockButton.addEventListener("mouseleave", () => {
+  setTimeout(() => {
+    clockButton
       .querySelector(".minute-hand-icon-animation")
-      .classList.add("animate");
-    button.querySelector(".hour-hand-icon-animation").classList.add("animate");
-  });
-
-  button.addEventListener("mouseleave", () => {
-    setTimeout(() => {
-      button
-        .querySelector(".default-hover-icon-animation")
-        .classList.remove("animate");
-      button
-        .querySelector(".minute-hand-icon-animation")
-        .classList.remove("animate");
-      button
-        .querySelector(".hour-hand-icon-animation")
-        .classList.remove("animate");
-    }, 1500);
+      .classList.remove("animate");
+    clockButton
+      .querySelector(".hour-hand-icon-animation")
+      .classList.remove("animate");
+  }, 1500);
+});
+document.querySelectorAll(".menu-button").forEach((button) => {
+  button.addEventListener("click", () => {
+    loadPage(button.id.split("-")[0]);
   });
 });
 
 export function changeTimezone(timezone) {
   const plusMinus = timezone[4] == "p" ? 1 : -1;
+  console.log(timezone[8]);
   if (timezone.length == 6) {
     timeDiff = plusMinus * 3600000 * timezone[5];
+  } else if (timezone.length == 7) {
+    console.log(timezone[6] + 10);
+    timeDiff = plusMinus * 3600000 * (parseInt(timezone[6]) + 10);
   } else if (timezone[7] == 3) {
-    timeDiff = plusMinus * 3600000 * (timezone[5] + 0.5);
+    timeDiff = plusMinus * 3600000 * (parseInt(timezone[5]) + 0.5);
+    console.log("succ");
   } else if (timezone[7] == 4) {
     ////0.45
-    timeDiff = plusMinus * 3600000 * (timezone[5] + 0.75);
+    timeDiff = plusMinus * 3600000 * (parseInt(timezone[5]) + 0.75);
   } else {
     timeDiff = 0;
   }
+}
+function loadPage(page) {
+  document.getElementById("content").classList.add("change");
+  setTimeout(() => {
+    fetch(`subsites/${page}.html`)
+      .then((response) => response.text())
+      .then((html) => {
+        document.getElementById("content").innerHTML = html;
+
+        setTimeout(() => {
+          document.getElementById("content").classList.remove("change");
+        }, 150);
+
+        if (page === "clock") {
+          loadMap();
+        }
+      })
+      .catch(() => {
+        document.getElementById("content").classList.remove("change");
+      });
+  }, 150);
 }

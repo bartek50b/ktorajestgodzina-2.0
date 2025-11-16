@@ -367,7 +367,7 @@ export const regionToTimezone = {
   pg10: "utc_p10",
   ru10: "utc_p10",
 
-  au1030: "utc_p10:30",
+  au1030: "utc_p10_30",
 
   coralsea11: "utc_p11",
   fm11: "utc_p11",
