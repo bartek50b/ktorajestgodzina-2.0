@@ -171,18 +171,12 @@ body {
       }
 
       #map-container {
-        max-height: 66vh;
         align-self: center;
         overflow: visible;
 
         #map {
-          transition: width 0.5s ease-out;
           margin: auto;
           width: 600px;
-
-          &:hover {
-            width: 90%;
-          }
 
           @media (min-width: 1920px) {
             width: 700px;
@@ -237,19 +231,26 @@ body {
 
         .form-title {
           font-size: $font-size * 1.5;
+          text-shadow: $font-size * 0.05 $font-size * 0.05 $font-size * 0.1
+            $secondary-color;
         }
 
         label {
           margin-bottom: 10px;
           color: $secondary-color;
+
+          text-shadow: $font-size * 0.02 $font-size * 0.02 $font-size * 0.07
+            $secondary-color;
         }
 
         input {
           width: 80%;
           height: $font-size;
           font-size: $font-size * 0.75;
+          background: transparentize($color: $secondary-color, $amount: 0.9);
           margin-bottom: 10px;
           color: $primary-color;
+          border: 2px black;
           @media (max-width: 720px) {
             width: 100%;
           }
@@ -258,9 +259,11 @@ body {
         select {
           width: 80%;
           height: $font-size;
-          font-size: $font-size * 0.5;
+          font-size: $font-size * 0.75;
           margin-bottom: 10px;
           color: $primary-color;
+          background: transparentize($color: $secondary-color, $amount: 0.9);
+          border: none;
           @media (max-width: 720px) {
             width: 100%;
           }
@@ -271,6 +274,7 @@ body {
           border: none;
           width: 50%;
           transition: background-color 0.2s ease-in;
+          background: transparentize($color: $secondary-color, $amount: 0.1);
           height: $font-size;
           font-size: $font-size * 0.75;
           @media (max-width: 720px) {
@@ -285,10 +289,12 @@ body {
 
         textarea {
           height: 300px;
-          font-size: $font-size * 0, 5;
+          font-size: $font-size * 0.5;
           margin-bottom: 10px;
           color: $primary-color;
-          background-color: opacify($secondary-color, 0.5);
+          border: none;
+          width: 70%;
+          background: transparentize($color: $secondary-color, $amount: 0.9);
           @media (max-width: 720px) {
             width: 100%;
           }

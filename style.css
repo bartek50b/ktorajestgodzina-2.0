@@ -152,17 +152,12 @@ body main #content.change {
   opacity: 0.2;
 }
 body main #content #map-container {
-  max-height: 66vh;
   align-self: center;
   overflow: visible;
 }
 body main #content #map-container #map {
-  transition: width 0.5s ease-out;
   margin: auto;
   width: 600px;
-}
-body main #content #map-container #map:hover {
-  width: 90%;
 }
 @media (min-width: 1920px) {
   body main #content #map-container #map {
@@ -221,17 +216,21 @@ body main #content .contact-form {
 }
 body main #content .contact-form .form-title {
   font-size: 45px;
+  text-shadow: 1.5px 1.5px 3px white;
 }
 body main #content .contact-form label {
   margin-bottom: 10px;
   color: white;
+  text-shadow: 0.6px 0.6px 2.1px white;
 }
 body main #content .contact-form input {
   width: 80%;
   height: 30px;
   font-size: 22.5px;
+  background: rgba(255, 255, 255, 0.1);
   margin-bottom: 10px;
   color: black;
+  border: 2px black;
 }
 @media (max-width: 720px) {
   body main #content .contact-form input {
@@ -241,9 +240,11 @@ body main #content .contact-form input {
 body main #content .contact-form select {
   width: 80%;
   height: 30px;
-  font-size: 15px;
+  font-size: 22.5px;
   margin-bottom: 10px;
   color: black;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
 }
 @media (max-width: 720px) {
   body main #content .contact-form select {
@@ -255,6 +256,7 @@ body main #content .contact-form .submit-button {
   border: none;
   width: 50%;
   transition: background-color 0.2s ease-in;
+  background: rgba(255, 255, 255, 0.9);
   height: 30px;
   font-size: 22.5px;
 }
@@ -269,10 +271,12 @@ body main #content .contact-form .submit-button:hover {
 }
 body main #content .contact-form textarea {
   height: 300px;
-  font-size: 0px, 5;
+  font-size: 15px;
   margin-bottom: 10px;
   color: black;
-  background-color: white;
+  border: none;
+  width: 70%;
+  background: rgba(255, 255, 255, 0.1);
 }
 @media (max-width: 720px) {
   body main #content .contact-form textarea {
