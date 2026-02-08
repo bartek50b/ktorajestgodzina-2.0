@@ -1,3 +1,4 @@
+@use "sass:color";
 $primary-color: black;
 $primary-color-accent: grey;
 $secondary-color: white;
@@ -29,11 +30,14 @@ body {
       gap: 30px;
       color: $primary-color;
       min-height: 100%;
+      min-width: 12vw;
       background-color: $secondary-color;
       padding: 20px;
       font-size: 40px;
       border: none;
-      transition: background-color 0.4s ease-in, scale 0.4s ease-in;
+      transition:
+        background-color 0.4s ease-in,
+        scale 0.4s ease-in;
 
       &:hover {
         background-color: darken($secondary-color, 30%);
@@ -114,8 +118,10 @@ body {
 
       #clock {
         font-size: $clock-size;
-        text-shadow: 0.2vw 0.2vw 0.15vw $secondary-color-accent;
         transition: font-size 0.5s ease-out;
+        -webkit-animation: glow 1s ease-in-out infinite alternate;
+        -moz-animation: glow 1s ease-in-out infinite alternate;
+        animation: glow 1s ease-in-out infinite alternate;
 
         &:hover {
           font-size: $clock-size * 1.05;
@@ -126,6 +132,9 @@ body {
         font-size: $clock-size * 0.5;
         text-shadow: 0.1vw 0.1vw 0.15vw $secondary-color-accent;
         align-self: flex-end;
+        -webkit-animation: glow 1s ease-in-out infinite alternate;
+        -moz-animation: glow 1s ease-in-out infinite alternate;
+        animation: glow 1s ease-in-out infinite alternate;
       }
 
       @media (max-width: 570px) {
@@ -173,8 +182,28 @@ body {
       #map-container {
         align-self: center;
         overflow: visible;
+        position: relative;
+
+        #alt_map-button {
+          background-color: $secondary-color;
+          border: none;
+          width: 100px;
+          position: absolute;
+          bottom: -30px;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transition: background-color 0.2s ease-in;
+          background: transparentize($color: $secondary-color, $amount: 0.7);
+          height: $font-size * 1.2;
+          font-size: $font-size * 0.75;
+          font-family: "Titillium Web", sans-serif;
+          &:hover {
+            background-color: darken($secondary-color, 30%);
+          }
+        }
 
         #map {
+          position: relative;
           margin: auto;
           width: 600px;
 
@@ -209,6 +238,49 @@ body {
               width: 3000px;
             }
           }
+        }
+      }
+
+      #map-container-alt {
+        width: 600px;
+        height: 400px;
+        @media (min-width: 1920px) {
+          width: 700px;
+        }
+        @media (min-width: 1400px) {
+          width: 1000px;
+        }
+        overflow: visible;
+        overflow-x: scroll;
+        display: block;
+        border: $primary-color 2px solid;
+        margin: 0 auto;
+        position: relative;
+        opacity: 0.5;
+        resize: both;
+        #map {
+          width: 3000px;
+          margin: 0 auto;
+          display: block;
+          right: 100%;
+        }
+      }
+
+      #clock-button {
+        background-color: $secondary-color;
+        border: none;
+        position: absolute;
+        right: calc(50% - 50px);
+        width: 100px;
+        z-index: 10;
+        padding: auto;
+        transition: background-color 0.2s ease-in;
+        background: transparentize($color: $secondary-color, $amount: 0.7);
+        height: $font-size * 1.2;
+        font-size: $font-size * 0.75;
+        font-family: "Titillium Web", sans-serif;
+        &:hover {
+          background-color: darken($secondary-color, 30%);
         }
       }
 
@@ -275,7 +347,7 @@ body {
           width: 50%;
           transition: background-color 0.2s ease-in;
           background: transparentize($color: $secondary-color, $amount: 0.1);
-          height: $font-size;
+          height: $font-size * 1.2;
           font-size: $font-size * 0.75;
           @media (max-width: 720px) {
             width: 70%;
@@ -300,42 +372,32 @@ body {
           }
         }
       }
+    }
 
-      #gallery {
-        font-family: "Titillium Web", sans-serif;
-        font-weight: 600;
-        margin: 40px;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        align-items: stretch;
-        font-size: $font-size;
-        gap: 30px;
-        justify-content: space-evenly;
+    #settings-container {
+      font-family: "Titillium Web", sans-serif;
+      font-weight: 600;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      font-size: $font-size;
+      width: 20%;
+      .settigns-options {
+        overflow: scroll;
+        .settings-option {
+          background-color: color.adjust($secondary-color, $alpha: -0.5);
+          border: 2px $primary-color;
+          color: $primary-color;
+          transition: background-color 0.2s ease-in;
 
-        .image-container {
-          max-width: 400px;
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          transition: font-size 0.5s ease-out, max-width 0.5s ease-out;
-
+          user-select: none;
           &:hover {
-            max-width: 430px;
-            font-size: $font-size * 1.15;
+            background-color: color.adjust(
+              $secondary-color,
+              $alpha: -0.5,
+              $lightness: -20%
+            );
           }
-        }
-
-        img {
-          width: 100%;
-          height: auto;
-          display: block;
-        }
-
-        video {
-          width: 100%;
-          height: auto;
-          display: block;
         }
       }
     }
@@ -350,5 +412,24 @@ body {
     text-align: center;
     font-size: 25px;
     margin-top: 0px;
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow:
+      0 0 3px $secondary-color-accent,
+      0 0 5px $secondary-color-accent,
+      0 0 8px color.adjust($secondary-color-accent, $lightness: -10%),
+      0 0 10px color.adjust($secondary-color-accent, $lightness: -15%),
+      0 0 13px color.adjust($secondary-color-accent, $lightness: -20%);
+  }
+  to {
+    text-shadow:
+      0 0 3px $secondary-color-accent,
+      0 0 6px $secondary-color-accent,
+      0 0 7px color.adjust($secondary-color-accent, $lightness: -10%),
+      0 0 10px color.adjust($secondary-color-accent, $lightness: -15%),
+      0 0 23px color.adjust($secondary-color-accent, $lightness: -20%);
   }
 }

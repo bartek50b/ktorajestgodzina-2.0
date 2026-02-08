@@ -1,0 +1,27 @@
+.minute-hand-icon-animation.animate {
+  animation: rotateMinuteHand 0.7s 2 linear;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotateMinuteHand {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hour-hand-icon-animation.animate {
+  animation: rotateHourHand 1.5s 1;
+  transform-origin: 50% 50%;
+}
+
+@keyframes rotateHourHand {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
