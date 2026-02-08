@@ -369,13 +369,8 @@ body main #settings-container .settigns-options {
 }
 body main #settings-container .settigns-options .settings-option {
   background-color: rgba(255, 255, 255, 0.5);
-  border: 2px black;
+  border-bottom: 2px black;
   color: black;
-  transition: background-color 0.2s ease-in;
-  user-select: none;
-}
-body main #settings-container .settigns-options .settings-option:hover {
-  background-color: rgba(204, 204, 204, 0.5);
 }
 body footer {
   font-family: "Titillium Web", sans-serif;

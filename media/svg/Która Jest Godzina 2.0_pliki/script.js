@@ -1,10 +1,7 @@
+import { skyColors, sunMoonColors, sunPositions } from "./data.js";
 import { loadMap } from "./map.js";
 let timeDiff = 0;
 let skyTime = new Date();
-let backgroundTheme = "dayAndNight";
-let skyColors;
-let sunMoonColors;
-let sunPositions;
 
 let updateClock = function updateClock() {
   const time = new Date();
@@ -80,7 +77,6 @@ setInterval(() => {
   changeColoursBasedOnSkyTime();
 }, 100);
 
-getBackgroundColors(backgroundTheme);
 updateClock();
 setInterval(updateClock, 1000);
 loadMap();
@@ -149,8 +145,6 @@ function loadPage(page) {
           loadMap();
         } else if (page === "alt_map") {
           loadMap();
-        } else if (page === "settings") {
-          addOptionsButtonEventListener();
         }
         addButtonEventListener();
       })
@@ -158,27 +152,4 @@ function loadPage(page) {
         document.getElementById("content").classList.remove("change");
       });
   }, 150);
-}
-
-async function getBackgroundColors(themeId) {
-  try {
-    const response = await fetch("backgroundThemes.json");
-    const data = await response.json();
-    const theme = data[themeId];
-    skyColors = theme.skyColors;
-    sunMoonColors = theme.sunMoonColors;
-    sunPositions = theme.sunPositions;
-  } catch (error) {
-    console.error("Błąd podczas motywu:", error);
-  }
-}
-
-function addOptionsButtonEventListener() {
-  document
-    .querySelectorAll(".settings-background-color-option")
-    .forEach((div) => {
-      div.addEventListener("click", () => {
-        getBackgroundColors(div.id);
-      });
-    });
 }
