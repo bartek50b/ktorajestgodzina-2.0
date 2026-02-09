@@ -1,7 +1,9 @@
 import { loadMap } from "./map.js";
 let timeDiff = 0;
 let skyTime = new Date();
-let backgroundTheme = "dayAndNight";
+let backgroundTheme = localStorage.getItem("backgroundTheme")
+  ? localStorage.getItem("backgroundTheme")
+  : "dayAndNight";
 let skyColors;
 let sunMoonColors;
 let sunPositions;
@@ -168,6 +170,7 @@ async function getBackgroundColors(themeId) {
     skyColors = theme.skyColors;
     sunMoonColors = theme.sunMoonColors;
     sunPositions = theme.sunPositions;
+    localStorage.setItem("backgroundTheme", themeId);
   } catch (error) {
     console.error("Błąd podczas motywu:", error);
   }

@@ -359,17 +359,19 @@ body main #settings-container {
   font-family: "Titillium Web", sans-serif;
   font-weight: 600;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   font-size: 30px;
   width: 20%;
+  padding: 0px 5px 10px 5px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
 }
 body main #settings-container .settigns-options {
   overflow: scroll;
+  border: 2px solid rgba(0, 0, 0, 0.5);
 }
 body main #settings-container .settigns-options .settings-option {
   background-color: rgba(255, 255, 255, 0.5);
-  border: 2px black;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
   color: black;
   transition: background-color 0.2s ease-in;
   user-select: none;
