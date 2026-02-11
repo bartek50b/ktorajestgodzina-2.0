@@ -359,15 +359,26 @@ body main #settings-container {
   font-family: "Titillium Web", sans-serif;
   font-weight: 600;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   font-size: 30px;
-  width: 20%;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 3;
+  flex-wrap: wrap;
   padding: 0px 5px 10px 5px;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  margin: auto;
+  width: 80%;
+  row-gap: 10px;
 }
 body main #settings-container .settigns-options {
   overflow: scroll;
   border: 2px solid rgba(0, 0, 0, 0.5);
+  min-width: 49%;
+}
+@media (max-width: 720px) {
+  body main #settings-container .settigns-options {
+    width: 100%;
+  }
 }
 body main #settings-container .settigns-options .settings-option {
   background-color: rgba(255, 255, 255, 0.5);
@@ -378,6 +389,11 @@ body main #settings-container .settigns-options .settings-option {
 }
 body main #settings-container .settigns-options .settings-option:hover {
   background-color: rgba(204, 204, 204, 0.5);
+}
+@media (max-width: 1080px) {
+  body main #settings-container {
+    width: 100%;
+  }
 }
 body footer {
   font-family: "Titillium Web", sans-serif;

@@ -378,14 +378,23 @@ body {
       font-family: "Titillium Web", sans-serif;
       font-weight: 600;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       font-size: $font-size;
-      width: 20%;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 3;
+      flex-wrap: wrap;
       padding: 0px 5px 10px 5px;
-      border: 2px solid color.adjust($primary-color, $alpha: -0.9);
+      margin: auto;
+      width: 80%;
+      row-gap: 10px;
       .settigns-options {
         overflow: scroll;
         border: 2px solid color.adjust($primary-color, $alpha: -0.5);
+        min-width: 49%;
+        @media (max-width: 720px) {
+          width: 100%;
+        }
         .settings-option {
           background-color: color.adjust($secondary-color, $alpha: -0.5);
           border-bottom: 2px solid color.adjust($primary-color, $alpha: -0.7);
@@ -400,6 +409,10 @@ body {
             );
           }
         }
+      }
+
+      @media (max-width: 1080px) {
+        width: 100%;
       }
     }
   }
