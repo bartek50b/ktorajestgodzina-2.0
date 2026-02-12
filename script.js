@@ -4,6 +4,9 @@ let skyTime = new Date();
 let backgroundTheme = localStorage.getItem("backgroundTheme")
   ? localStorage.getItem("backgroundTheme")
   : "dayAndNight";
+let timeLocale = localStorage.getItem("timeLocale")
+  ? localStorage.getItem("timeLocale")
+  : "24hrs";
 let skyColors;
 let sunMoonColors;
 let sunPositions;
@@ -14,12 +17,19 @@ let updateClock = function updateClock() {
   const hours = adjustedTime.getUTCHours();
   const minutes = adjustedTime.getUTCMinutes();
   const seconds = adjustedTime.getUTCSeconds();
-
+  const timeLocaleMod = timeLocale == "24hrs" ? 24 : 12;
+  let timeLocaleInfo = "";
+  if (timeLocale == "12hrs") {
+    timeLocaleInfo = hours > 12 ? "AM" : "PM";
+  }
   const timeToString =
-    String(hours).padStart(2, "0") + ":" + String(minutes).padStart(2, "0");
+    String(hours % timeLocaleMod).padStart(2, "0") +
+    ":" +
+    String(minutes).padStart(2, "0");
   const secondsToString = String(seconds).padStart(2, "0");
   document.getElementById("clock").innerHTML = timeToString;
-  document.getElementById("clock-seconds").innerHTML = secondsToString;
+  document.getElementById("clock-seconds").innerHTML =
+    secondsToString + timeLocaleInfo;
 };
 
 function changeColoursBasedOnSkyTime() {
@@ -115,6 +125,19 @@ function addButtonEventListener() {
       loadPage(button.id.split("-")[0]);
     });
   });
+  document.querySelectorAll(".info-more-button").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      button.classList.toggle("active");
+      const infoMore = event.currentTarget.nextElementSibling;
+      if (infoMore.style.maxHeight) {
+        infoMore.style.maxHeight = null;
+        button.innerHTML = button.innerHTML.replace("↑", "↓");
+      } else {
+        infoMore.style.maxHeight = "3000px";
+        button.innerHTML = button.innerHTML.replace("↓", "↑");
+      }
+    });
+  });
 }
 
 export function changeTimezone(timezone) {
@@ -184,4 +207,10 @@ function addOptionsButtonEventListener() {
         getBackgroundColors(div.id);
       });
     });
+  document.querySelectorAll(".settings-hour-locale-option").forEach((div) => {
+    div.addEventListener("click", () => {
+      localStorage.setItem("timeLocale", div.id);
+      timeLocale = div.id;
+    });
+  });
 }

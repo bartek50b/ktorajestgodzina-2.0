@@ -44,7 +44,7 @@ body nav .menu-button .menu-icon .menu-icon-svg {
   width: 50px;
   position: absolute;
 }
-@media (max-width: 500px) {
+@media (max-width: 720px) {
   body nav {
     align-items: stretch;
   }
@@ -53,7 +53,7 @@ body nav .menu-button .menu-icon .menu-icon-svg {
     flex-grow: 1;
   }
 }
-@media (max-width: 720px) and (min-width: 500px) {
+@media (max-width: 1080px) and (min-width: 720px) {
   body nav .menu-icon {
     display: none;
   }
@@ -99,6 +99,7 @@ body main #clock-section {
   user-select: none;
   opacity: 0.8;
   transition: opacity 0.4s ease-in;
+  position: relative;
 }
 body main #clock-section:hover {
   opacity: 0.6;
@@ -106,6 +107,7 @@ body main #clock-section:hover {
 body main #clock-section #clock {
   font-size: 160px;
   transition: font-size 0.5s ease-out;
+  position: relative;
   -webkit-animation: glow 1s ease-in-out infinite alternate;
   -moz-animation: glow 1s ease-in-out infinite alternate;
   animation: glow 1s ease-in-out infinite alternate;
@@ -116,7 +118,11 @@ body main #clock-section #clock:hover {
 body main #clock-section #clock-seconds {
   font-size: 80px;
   text-shadow: 0.1vw 0.1vw 0.15vw white;
-  align-self: flex-end;
+  position: absolute;
+  transform: translateX(0);
+  transform: translateX(0);
+  left: calc(50% + 240px);
+  top: 45%;
   -webkit-animation: glow 1s ease-in-out infinite alternate;
   -moz-animation: glow 1s ease-in-out infinite alternate;
   animation: glow 1s ease-in-out infinite alternate;
@@ -133,7 +139,7 @@ body main #clock-section #clock-seconds {
   body main #clock-section #clock-seconds {
     font-size: 40px;
     text-shadow: 0.05vw 0.05vw 0.07vw white;
-    align-self: flex-end;
+    left: calc(50% + 84px);
   }
 }
 @media (max-width: 720px) {
@@ -148,7 +154,7 @@ body main #clock-section #clock-seconds {
   body main #clock-section #clock-seconds {
     font-size: 56px;
     text-shadow: 0.07vw 0.07vw 0.7vw white;
-    align-self: flex-end;
+    left: calc(50% + 120px);
   }
 }
 body main #content {
@@ -359,41 +365,69 @@ body main #settings-container {
   font-family: "Titillium Web", sans-serif;
   font-weight: 600;
   display: flex;
+  box-sizing: border-box;
   flex-direction: row;
   font-size: 30px;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   flex-grow: 3;
   flex-wrap: wrap;
-  padding: 0px 5px 10px 5px;
+  padding: 5px 5px 10px 5px;
   margin: auto;
   width: 80%;
   row-gap: 10px;
 }
-body main #settings-container .settigns-options {
+body main #settings-container .settings-options {
+  flex: 0 0 48%;
   overflow: scroll;
   border: 2px solid rgba(0, 0, 0, 0.5);
-  min-width: 49%;
+  margin: 5px;
 }
 @media (max-width: 720px) {
-  body main #settings-container .settigns-options {
+  body main #settings-container .settings-options {
     width: 100%;
   }
 }
-body main #settings-container .settigns-options .settings-option {
+body main #settings-container .settings-options .settings-option {
   background-color: rgba(255, 255, 255, 0.5);
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
   color: black;
   transition: background-color 0.2s ease-in;
   user-select: none;
 }
-body main #settings-container .settigns-options .settings-option:hover {
+body main #settings-container .settings-options .settings-option:hover {
   background-color: rgba(204, 204, 204, 0.5);
 }
 @media (max-width: 1080px) {
   body main #settings-container {
     width: 100%;
   }
+}
+body #info {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 30px;
+  text-align: justify;
+  padding: 0px 5px 10px 5px;
+  margin: auto;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+body #info .info-more-button {
+  user-select: none;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 30px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+body #info .info-more {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: rgba(0, 0, 0, 0.1);
+  font-size: 20px;
 }
 body footer {
   font-family: "Titillium Web", sans-serif;
