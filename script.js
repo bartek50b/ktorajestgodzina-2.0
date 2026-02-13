@@ -14,22 +14,21 @@ let sunPositions;
 let updateClock = function updateClock() {
   const time = new Date();
   const adjustedTime = new Date(time.getTime() + timeDiff);
-  const hours = adjustedTime.getUTCHours();
+  let hours = adjustedTime.getUTCHours();
   const minutes = adjustedTime.getUTCMinutes();
   const seconds = adjustedTime.getUTCSeconds();
   const timeLocaleMod = timeLocale == "24hrs" ? 24 : 12;
   let timeLocaleInfo = "";
   if (timeLocale == "12hrs") {
-    timeLocaleInfo = hours > 12 ? "AM" : "PM";
+    timeLocaleInfo = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12 > 0 ? hours % 12 : 12;
   }
   const timeToString =
-    String(hours % timeLocaleMod).padStart(2, "0") +
-    ":" +
-    String(minutes).padStart(2, "0");
+    String(hours).padStart(2, "0") + ":" + String(minutes).padStart(2, "0");
   const secondsToString = String(seconds).padStart(2, "0");
   document.getElementById("clock").innerHTML = timeToString;
-  document.getElementById("clock-seconds").innerHTML =
-    secondsToString + timeLocaleInfo;
+  document.getElementById("clock-seconds").innerHTML = secondsToString;
+  document.getElementById("clock-am-pm").innerHTML = timeLocaleInfo;
 };
 
 function changeColoursBasedOnSkyTime() {

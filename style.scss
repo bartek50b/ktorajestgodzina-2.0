@@ -130,7 +130,7 @@ body {
         }
       }
 
-      #clock-seconds {
+      .clock-addicional-info {
         font-size: $clock-size * 0.5;
         text-shadow: 0.1vw 0.1vw 0.15vw $secondary-color-accent;
         position: absolute;
@@ -141,6 +141,12 @@ body {
         -webkit-animation: glow 1s ease-in-out infinite alternate;
         -moz-animation: glow 1s ease-in-out infinite alternate;
         animation: glow 1s ease-in-out infinite alternate;
+      }
+      #clock-seconds {
+        top: 45%;
+      }
+      #clock-am-pm {
+        top: 10%;
       }
 
       @media (max-width: 570px) {
@@ -153,10 +159,16 @@ body {
             font-size: $clock-size * 0.5;
           }
         }
-        #clock-seconds {
-          font-size: $clock-size * 0.25;
+        .clock-addicional-info {
+          font-size: $clock-size * 0.2;
           text-shadow: 0.05vw 0.05vw 0.07vw $secondary-color-accent;
           left: calc(50% + $clock-size * 0.35 * 1.5);
+        }
+        #clock-seconds {
+          top: 45%;
+        }
+        #clock-am-pm {
+          top: 3%;
         }
       }
 
@@ -170,10 +182,16 @@ body {
             font-size: $clock-size * 0.5;
           }
         }
-        #clock-seconds {
-          font-size: $clock-size * 0.35;
+        .clock-addicional-info {
+          font-size: $clock-size * 0.25;
           text-shadow: 0.07vw 0.07vw 0.7vw $secondary-color-accent;
           left: calc(50% + $clock-size * 0.5 * 1.5);
+        }
+        #clock-seconds {
+          top: 45%;
+        }
+        #clock-am-pm {
+          top: 3%;
         }
       }
     }

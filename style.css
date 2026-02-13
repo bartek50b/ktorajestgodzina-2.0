@@ -115,7 +115,7 @@ body main #clock-section #clock {
 body main #clock-section #clock:hover {
   font-size: 168px;
 }
-body main #clock-section #clock-seconds {
+body main #clock-section .clock-addicional-info {
   font-size: 80px;
   text-shadow: 0.1vw 0.1vw 0.15vw white;
   position: absolute;
@@ -127,6 +127,12 @@ body main #clock-section #clock-seconds {
   -moz-animation: glow 1s ease-in-out infinite alternate;
   animation: glow 1s ease-in-out infinite alternate;
 }
+body main #clock-section #clock-seconds {
+  top: 45%;
+}
+body main #clock-section #clock-am-pm {
+  top: 10%;
+}
 @media (max-width: 570px) {
   body main #clock-section #clock {
     font-size: 80px;
@@ -136,10 +142,16 @@ body main #clock-section #clock-seconds {
   body main #clock-section #clock:hover {
     font-size: 80px;
   }
-  body main #clock-section #clock-seconds {
-    font-size: 40px;
+  body main #clock-section .clock-addicional-info {
+    font-size: 32px;
     text-shadow: 0.05vw 0.05vw 0.07vw white;
     left: calc(50% + 84px);
+  }
+  body main #clock-section #clock-seconds {
+    top: 45%;
+  }
+  body main #clock-section #clock-am-pm {
+    top: 3%;
   }
 }
 @media (max-width: 720px) {
@@ -151,10 +163,16 @@ body main #clock-section #clock-seconds {
   body main #clock-section #clock:hover {
     font-size: 80px;
   }
-  body main #clock-section #clock-seconds {
-    font-size: 56px;
+  body main #clock-section .clock-addicional-info {
+    font-size: 40px;
     text-shadow: 0.07vw 0.07vw 0.7vw white;
     left: calc(50% + 120px);
+  }
+  body main #clock-section #clock-seconds {
+    top: 45%;
+  }
+  body main #clock-section #clock-am-pm {
+    top: 3%;
   }
 }
 body main #content {
