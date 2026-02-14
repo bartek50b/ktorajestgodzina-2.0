@@ -66,17 +66,23 @@ body nav .menu-button .menu-icon .menu-icon-svg {
     flex-grow: 1;
   }
 }
-body #gallery-button {
+body #contact-button {
   background-color: rgb(242.25, 242.25, 242.25);
 }
-body #gallery-button:hover {
+body #contact-button:hover {
   background-color: rgb(165.75, 165.75, 165.75);
 }
-body #contact-button {
+body #settings-button {
   background-color: rgb(229.5, 229.5, 229.5);
 }
-body #contact-button:hover {
+body #settings-button:hover {
   background-color: #999999;
+}
+body #info-button {
+  background-color: rgb(216.75, 216.75, 216.75);
+}
+body #info-button:hover {
+  background-color: rgb(140.25, 140.25, 140.25);
 }
 body main {
   min-height: 85vh;

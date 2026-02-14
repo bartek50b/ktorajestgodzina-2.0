@@ -35,9 +35,7 @@ body {
       padding: 20px;
       font-size: 40px;
       border: none;
-      transition:
-        background-color 0.4s ease-in,
-        scale 0.4s ease-in;
+      transition: background-color 0.4s ease-in, scale 0.4s ease-in;
 
       &:hover {
         background-color: darken($secondary-color, 30%);
@@ -76,7 +74,7 @@ body {
     }
   }
 
-  #gallery-button {
+  #contact-button {
     background-color: darken($secondary-color, 5%);
 
     &:hover {
@@ -84,11 +82,18 @@ body {
     }
   }
 
-  #contact-button {
+  #settings-button {
     background-color: darken($secondary-color, 10%);
 
     &:hover {
       background-color: darken($secondary-color, 40%);
+    }
+  }
+  #info-button {
+    background-color: darken($secondary-color, 15%);
+
+    &:hover {
+      background-color: darken($secondary-color, 45%);
     }
   }
 
@@ -484,16 +489,14 @@ body {
 
 @keyframes glow {
   from {
-    text-shadow:
-      0 0 3px $secondary-color-accent,
+    text-shadow: 0 0 3px $secondary-color-accent,
       0 0 5px $secondary-color-accent,
       0 0 8px color.adjust($secondary-color-accent, $lightness: -10%),
       0 0 10px color.adjust($secondary-color-accent, $lightness: -15%),
       0 0 13px color.adjust($secondary-color-accent, $lightness: -20%);
   }
   to {
-    text-shadow:
-      0 0 3px $secondary-color-accent,
+    text-shadow: 0 0 3px $secondary-color-accent,
       0 0 6px $secondary-color-accent,
       0 0 7px color.adjust($secondary-color-accent, $lightness: -10%),
       0 0 10px color.adjust($secondary-color-accent, $lightness: -15%),
