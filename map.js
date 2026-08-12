@@ -1,5 +1,22 @@
 import { regionToTimezone } from "./data.js";
-import { changeTimezone } from "./script.js";
+import { changeTimezone, getTimezoneOffsetMs } from "./script.js";
+
+let regionOffsetMs = {};
+let offsetGroups = {};
+
+function buildTimezoneGroups() {
+  const now = new Date();
+  const nextRegionOffsetMs = {};
+  const nextOffsetGroups = {};
+  for (const [regionId, timezone] of Object.entries(regionToTimezone)) {
+    const offsetMs = getTimezoneOffsetMs(timezone, now);
+    nextRegionOffsetMs[regionId] = offsetMs;
+    if (!nextOffsetGroups[offsetMs]) nextOffsetGroups[offsetMs] = [];
+    nextOffsetGroups[offsetMs].push(regionId);
+  }
+  regionOffsetMs = nextRegionOffsetMs;
+  offsetGroups = nextOffsetGroups;
+}
 
 export function loadMap() {
   fetch("media/svg/timezones.svg")
@@ -7,6 +24,9 @@ export function loadMap() {
     .then((svg) => {
       document.getElementById("map").innerHTML = svg;
       const regions = document.getElementsByClassName("o");
+
+      buildTimezoneGroups();
+      setInterval(buildTimezoneGroups, 30 * 60 * 1000);
 
       let selectedRegion = localStorage.getItem("selectedRegion")
         ? localStorage.getItem("selectedRegion")
@@ -16,12 +36,14 @@ export function loadMap() {
 
       Array.from(regions).forEach((region) => {
         region.addEventListener("mouseover", () => {
-          const timezone = regionToTimezone[region.id];
-          if (!timezone) return;
-          const sameTimezoneRegions = document.getElementsByClassName(timezone);
+          if (!(region.id in regionOffsetMs)) return;
+          const offsetMs = regionOffsetMs[region.id];
+          const sameTimezoneRegionIds = offsetGroups[offsetMs] || [];
 
-          Array.from(sameTimezoneRegions).forEach((sameTimezoneRegion) => {
-            if (sameTimezoneRegion.id != region.id) {
+          sameTimezoneRegionIds.forEach((id) => {
+            const sameTimezoneRegion = document.getElementById(id);
+            if (!sameTimezoneRegion) return;
+            if (id != region.id) {
               sameTimezoneRegion.classList.add("same-timezone");
             } else {
               sameTimezoneRegion.classList.add("hovered");
@@ -30,12 +52,14 @@ export function loadMap() {
         });
 
         region.addEventListener("mouseout", () => {
-          const timezone = regionToTimezone[region.id];
-          if (!timezone) return;
-          const sameTimezoneRegions = document.getElementsByClassName(timezone);
+          if (!(region.id in regionOffsetMs)) return;
+          const offsetMs = regionOffsetMs[region.id];
+          const sameTimezoneRegionIds = offsetGroups[offsetMs] || [];
 
-          Array.from(sameTimezoneRegions).forEach((sameTimezoneRegion) => {
-            if (sameTimezoneRegion.id != region.id) {
+          sameTimezoneRegionIds.forEach((id) => {
+            const sameTimezoneRegion = document.getElementById(id);
+            if (!sameTimezoneRegion) return;
+            if (id != region.id) {
               sameTimezoneRegion.classList.remove("same-timezone");
             } else {
               sameTimezoneRegion.classList.remove("hovered");

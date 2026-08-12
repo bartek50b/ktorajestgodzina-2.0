@@ -1,6 +1,7 @@
 import { loadMap } from "./map.js";
 let timeDiff = 0;
 let skyTime = new Date();
+let selectedTimezone = "UTC";
 let backgroundTheme = localStorage.getItem("backgroundTheme")
   ? localStorage.getItem("backgroundTheme")
   : "dayAndNight";
@@ -11,8 +12,43 @@ let skyColors;
 let sunMoonColors;
 let sunPositions;
 
+export function getTimezoneOffsetMs(timeZone, date = new Date()) {
+  try {
+    const dtf = new Intl.DateTimeFormat("en-US", {
+      timeZone,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    });
+    const parts = dtf.formatToParts(date);
+    const map = {};
+    for (const part of parts) {
+      if (part.type !== "literal") map[part.type] = part.value;
+    }
+    let hour = parseInt(map.hour, 10);
+    if (hour === 24) hour = 0;
+    const wallClockAsUTC = Date.UTC(
+      parseInt(map.year, 10),
+      parseInt(map.month, 10) - 1,
+      parseInt(map.day, 10),
+      hour,
+      parseInt(map.minute, 10),
+      parseInt(map.second, 10),
+    );
+    return wallClockAsUTC - date.getTime();
+  } catch (error) {
+    console.error(`Wrong timezone "${timeZone}":`, error);
+    return 0;
+  }
+}
+
 let updateClock = function updateClock() {
   const time = new Date();
+  timeDiff = getTimezoneOffsetMs(selectedTimezone, time);
   const adjustedTime = new Date(time.getTime() + timeDiff);
   let hours = adjustedTime.getUTCHours();
   const minutes = adjustedTime.getUTCMinutes();
@@ -140,23 +176,10 @@ function addButtonEventListener() {
 }
 
 export function changeTimezone(timezone) {
-  const plusMinus = timezone[4] == "p" ? 1 : -1;
-  console.log(timezone[8]);
-  if (timezone.length == 6) {
-    timeDiff = plusMinus * 3600000 * timezone[5];
-  } else if (timezone.length == 7) {
-    console.log(timezone[6] + 10);
-    timeDiff = plusMinus * 3600000 * (parseInt(timezone[6]) + 10);
-  } else if (timezone[7] == 3) {
-    timeDiff = plusMinus * 3600000 * (parseInt(timezone[5]) + 0.5);
-    console.log("succ");
-  } else if (timezone[7] == 4) {
-    ////0.45
-    timeDiff = plusMinus * 3600000 * (parseInt(timezone[5]) + 0.75);
-  } else {
-    timeDiff = 0;
-  }
+  selectedTimezone = timezone;
+  timeDiff = getTimezoneOffsetMs(selectedTimezone);
 }
+
 function loadPage(page) {
   document.getElementById("content").classList.add("change");
   setTimeout(() => {
